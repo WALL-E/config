@@ -45,6 +45,7 @@ async def on_message(message):
         await message.channel.send('Release at 2024-03-15T00:34:00!')
 
     if message.content.startswith('//restart'):
+        client.close()
         await message.channel.send('Restarting!')
         sys.exit(0)
 
