@@ -38,6 +38,9 @@ async def on_message(message):
     if message.content.startswith('//hello'):
         await message.channel.send('Hello!')
 
+    if message.content.startswith('//list'):
+        await message.channel.send('command: hello, who, hostname, eip, ip, df, docker ps')
+
     if message.content.startswith('//who'):
         command = "who"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
