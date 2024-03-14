@@ -41,8 +41,24 @@ async def on_message(message):
     if message.content.startswith('//hello'):
         await message.channel.send('Hello!')
 
+    if message.content.startswith('//restart'):
+        await message.channel.send('Restarting!')
+        sys.exit(0)
+
     if message.content.startswith('//list'):
         await message.channel.send('command: hello, who, hostname, eip, ip, df, docker ps')
+
+    if message.content.startswith('//upgrade'):
+        command = """
+        wget -t 3 -O ~/discord-bot.py https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py;chmod +x ~/discord-bot.py;echo 'Upgrade OK'
+        """
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        output, error = process.communicate()
+        print(error)
+
+        # 将输出内容转换为字符串
+        response = output.decode("utf-8")
+        await message.channel.send(response)
 
     if message.content.startswith('//who'):
         command = "who"
