@@ -5,7 +5,7 @@
 #
 # @update: 2024-03-15T00:23:00
 #
-# @command: hello,who,hostname,eip,ip,df,docker ps
+# @command: list,hello,version,restart,upgrade,who,hostname,eip,ip,df,docker ps
 #
 import os
 import sys
@@ -35,18 +35,18 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('//version'):
-        await message.channel.send('Release at 2024-03-15T00:34:00!')
+    if message.content.startswith('//list'):
+        await message.channel.send('command: list,hello,version,restart,upgrade,who,hostname,eip,ip,df,docker ps')
 
     if message.content.startswith('//hello'):
         await message.channel.send('Hello!')
+        
+    if message.content.startswith('//version'):
+        await message.channel.send('Release at 2024-03-15T00:34:00!')
 
     if message.content.startswith('//restart'):
         await message.channel.send('Restarting!')
         sys.exit(0)
-
-    if message.content.startswith('//list'):
-        await message.channel.send('command: hello, who, hostname, eip, ip, df, docker ps')
 
     if message.content.startswith('//upgrade'):
         command = """
