@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #
-#
+# wget https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py
 #
 import os
 import sys
