@@ -2,7 +2,9 @@
 #
 # wget https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py
 #
-# @release date: 2024-03-15T00:23:00
+# @update: 2024-03-15T00:23:00
+#
+# @command: hello,who,hostname,eip,ip,df,docker ps
 #
 import os
 import sys
@@ -75,7 +77,7 @@ async def on_message(message):
         response = output.decode("utf-8")
         await message.channel.send(response)
 
-    if message.content.startswith('//df -h'):
+    if message.content.startswith('//df'):
         command = "df -h"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = process.communicate()
