@@ -43,6 +43,16 @@ async def on_message(message):
         response = output.decode("utf-8")
         await message.channel.send(response)
 
+    if message.content.startswith('//hostname'):
+        command = "hostname"
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        output, error = process.communicate()
+        print(error)
+
+        # 将输出内容转换为字符串
+        response = output.decode("utf-8")
+        await message.channel.send(response)
+
     if message.content.startswith('//eip'):
         command = "curl https://ifconfig.io"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
