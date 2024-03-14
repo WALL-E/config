@@ -2,6 +2,8 @@
 #
 # wget https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py
 #
+# @release date: 2024-03-15T00:23:00
+#
 import os
 import sys
 
