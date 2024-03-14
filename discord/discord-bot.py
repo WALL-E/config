@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 #
-# wget https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py
+# wget -t 3 -O ~/discord-bot.py https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py
+# chmod +x discord-bot.py
 #
 # @update: 2024-03-15T00:23:00
 #
