@@ -6,17 +6,19 @@
 #
 import os
 import sys
-
-import discord
 import subprocess
 
-if not os.path.isfile('//home/ec2-user/token.txt'):
+import discord
+
+token_filename = '/home/ec2-user/token.txt'
+
+if not os.path.isfile(token_filename):
     print("token.txt 文件不存在。进程即将退出。")
     sys.exit()
 
 # 读取文件内容到变量
-with open('//home/ec2-user/token.txt', 'r') as file:
-        token = file.read().strip("\n")
+with open(token_filename, 'r') as file:
+    token = file.read().strip("\n")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -42,8 +44,8 @@ async def on_message(message):
         await message.channel.send('Release at 2024-03-15T07:39:00!')
 
     if message.content.startswith('//restart'):
-        client.close()
         await message.channel.send('Restarting!')
+        client.close()
         sys.exit(0)
 
     if message.content.startswith('//upgrade'):
