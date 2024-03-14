@@ -72,7 +72,7 @@ async def on_message(message):
         # 将输出内容转换为字符串
         response = output.decode("utf-8")
         await message.channel.send(response)
-   if message.content.startswith('//uptime'):
+    if message.content.startswith('//uptime'):
         command = "uptime"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = process.communicate()
