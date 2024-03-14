@@ -3,9 +3,6 @@
 # wget -t 3 -O ~/discord-bot.py https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py
 # chmod +x discord-bot.py
 #
-# @update: 2024-03-15T00:23:00
-#
-# @command: list,hello,version,restart,upgrade,who,hostname,eip,ip,df,docker ps
 #
 import os
 import sys
@@ -42,7 +39,7 @@ async def on_message(message):
         await message.channel.send('Hello!')
         
     if message.content.startswith('//version'):
-        await message.channel.send('Release at 2024-03-15T00:34:00!')
+        await message.channel.send('Release at 2024-03-15T07:39:00!')
 
     if message.content.startswith('//restart'):
         client.close()
