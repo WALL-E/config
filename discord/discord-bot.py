@@ -35,6 +35,9 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    if message.content.startswith('//version'):
+        await message.channel.send('Release at 2024-03-15T00:34:00!')
+
     if message.content.startswith('//hello'):
         await message.channel.send('Hello!')
 
