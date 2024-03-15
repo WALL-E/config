@@ -41,7 +41,7 @@ async def on_message(message):
         await message.channel.send('Hello!')
         
     if message.content.startswith('//version'):
-        await message.channel.send('Release at 2024-03-15T07:39:00!')
+        await message.channel.send('Release at 2024-03-15T10:31:00!')
 
     if message.content.startswith('//restart'):
         await message.channel.send('Restarting!')
