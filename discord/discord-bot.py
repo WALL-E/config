@@ -14,7 +14,7 @@ token_filename = '/home/ec2-user/token.txt'
 
 
 def execute_shell(input):
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    result = subprocess.run(input, shell=True, capture_output=True, text=True)
 
     if result.returncode == 0:
         output = result.stdout.strip()
