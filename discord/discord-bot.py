@@ -12,6 +12,18 @@ import discord
 
 token_filename = '/home/ec2-user/token.txt'
 
+
+def execute_shell(input):
+    result = subprocess.run(input, capture_output=True, text=True)
+
+    if result.returncode == 0:
+        output = result.stdout.strip()
+    else:
+        output = result.stderr.strip()
+
+    return output
+
+
 if not os.path.isfile(token_filename):
     print("token.txt 文件不存在。进程即将退出。")
     sys.exit()
@@ -61,34 +73,19 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith('//who'):
-        command = "who"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
-
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
+        command = ["who"]
+        output = execute_shell(command)
+        await message.channel.send(output)
 
     if message.content.startswith('//hostname'):
-        command = "hostname"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
-
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
+        command = ["hostname"]
+        output = execute_shell(command)
+        await message.channel.send(output)
 
     if message.content.startswith('//eip'):
-        command = "curl https://ifconfig.io"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
-
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
+        command = ["curl", "https://ifconfig.io"]
+        output = execute_shell(command)
+        await message.channel.send(output)
 
     if message.content.startswith('//ip'):
         command = "ip route get 8.8.8.8 | grep '8.8.8.8' | cut -d' ' -f7"
