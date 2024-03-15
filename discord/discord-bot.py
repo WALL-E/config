@@ -14,7 +14,7 @@ token_filename = '/home/ec2-user/token.txt'
 
 
 def execute_shell(input):
-    result = subprocess.run(input, capture_output=True, text=True)
+    result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     if result.returncode == 0:
         output = result.stdout.strip()
@@ -53,7 +53,7 @@ async def on_message(message):
         await message.channel.send('Hello!')
         
     if message.content.startswith('//version'):
-        await message.channel.send('Release at 2024-03-15T10:31:00!')
+        await message.channel.send('Release at 2024-03-15T14:26:00!')
 
     if message.content.startswith('//restart'):
         await message.channel.send('Restarting!')
@@ -64,66 +64,43 @@ async def on_message(message):
         command = """
         wget -t 3 -O ~/discord-bot.py https://raw.githubusercontent.com/WALL-E/config/master/discord/discord-bot.py;chmod +x ~/discord-bot.py;echo 'Upgrade OK'
         """
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
-
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
+        output = execute_shell(command)
+        await message.channel.send(output)
 
     if message.content.startswith('//who'):
-        command = ["who"]
+        command = "who"
         output = execute_shell(command)
         await message.channel.send(output)
 
     if message.content.startswith('//hostname'):
-        command = ["hostname"]
+        command = "hostname"
         output = execute_shell(command)
         await message.channel.send(output)
 
     if message.content.startswith('//eip'):
-        command = ["curl", "https://ifconfig.io"]
+        command = "curl https://ifconfig.io"
         output = execute_shell(command)
         await message.channel.send(output)
 
     if message.content.startswith('//ip'):
-        command = "ip route get 8.8.8.8 | grep '8.8.8.8' | cut -d' ' -f7"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
-
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
+        command = "ip route get 8.8.8.8 | grep 8.8.8.8 | cut -d' ' -f7"
+        output = execute_shell(command)
+        await message.channel.send(output)
 
     if message.content.startswith('//df'):
         command = "df -h"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
+        output = execute_shell(command)
+        await message.channel.send(output)
 
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
     if message.content.startswith('//uptime'):
         command = "uptime"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
-
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
+        output = execute_shell(command)
+        await message.channel.send(output)
 
     if message.content.startswith('//docker ps'):
         command = "docker ps"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
-        print(error)
+        output = execute_shell(command)
+        await message.channel.send(output)
 
-        # 将输出内容转换为字符串
-        response = output.decode("utf-8")
-        await message.channel.send(response)
 
 client.run(token)
