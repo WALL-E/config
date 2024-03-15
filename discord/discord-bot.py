@@ -53,7 +53,7 @@ async def on_message(message):
         await message.channel.send('Hello!')
         
     if message.content.startswith('//version'):
-        await message.channel.send('Release at 2024-03-15T15:40:00!')
+        await message.channel.send('Release at 2024-03-15T17:57:00!')
 
     if message.content.startswith('//restart'):
         await message.channel.send('Restarting!')
@@ -94,6 +94,11 @@ async def on_message(message):
 
     if message.content.startswith('//uptime'):
         command = "uptime"
+        output = execute_shell(command)
+        await message.channel.send(output)
+
+    if message.content.startswith('//free'):
+        command = "free -h"
         output = execute_shell(command)
         await message.channel.send(output)
 
