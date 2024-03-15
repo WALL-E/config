@@ -35,7 +35,7 @@ async def on_message(message):
         return
 
     if message.content.startswith('//help'):
-        await message.channel.send('command: list,hello,version,restart,upgrade,who,hostname,eip,ip,df,docker ps')
+        await message.channel.send('command: help,hello,version,restart,upgrade,who,hostname,eip,ip,df,docker ps')
 
     if message.content.startswith('//hello'):
         await message.channel.send('Hello!')
