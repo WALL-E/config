@@ -51,3 +51,12 @@ else
     ngx.var.target = "127.0.0.1:8082"
 end
 ```
+
+## 关键点-5
+
+需要优化的关键代码
+
+```
+// Todo: 只截取字符串的关键部分进行计算
+digest = ngx.crc32_short(value)
+```
