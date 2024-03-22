@@ -41,3 +41,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"apiUrl": 6}' http://127.0
 curl -X POST -H "Content-Type: application/json" -d '{"apiUrl": 7}' http://127.0.0.1:80
 curl -X POST -H "Content-Type: application/json" -d '{"apiUrl": 8}' http://127.0.0.1:80
 curl -X POST -H "Content-Type: application/json" -d '{"apiUrl": 9}' http://127.0.0.1:80
+curl -X POST -H "Content-Type: application/json" -d '{"apiUrl": 10.1}' http://127.0.0.1:80
+curl -X POST -H "Content-Type: application/json" -d '{"apiUrl": 10.2}' http://127.0.0.1:80
+curl -X POST -H "Content-Type: application/json" -d '{"apiUrl": 10.3}' http://127.0.0.1:80
